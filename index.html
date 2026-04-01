@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layer 1 — Sales Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0F0F5;--card:#FFFFFF;--text:#1E1E2D;--ts:#7E7E8F;--tm:#A0A0B0;--border:#EDEDF2;--accent:#6C5CE7;--al:rgba(108,92,231,.08);--green:#00C48C;--gbg:rgba(0,196,140,.1);--red:#FF5B5B;--rbg:rgba(255,91,91,.1);--blue:#4DA3FF;--bbg:rgba(77,163,255,.1);--amber:#FFB946;--abg:rgba(255,185,70,.1);--purple:#9B6ED0;--pbg:rgba(155,110,208,.1);--teal:#3AAFB9;--orange:#FF8A5C;--gold:#C4A265;--r:14px;--rs:10px;--sh:0 2px 8px rgba(0,0,0,.04);--shh:0 4px 20px rgba(0,0,0,.08);--f:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;min-height:100vh}
+.sb{width:240px;background:var(--card);border-right:1px solid var(--border);padding:28px 20px;display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100}
+.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:36px;padding:0 4px}
+.sb-logo .ico{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),#D4B67A);border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff}
+.sb-logo .txt{font-size:17px;font-weight:700}.sb-logo .sub{font-size:10px;color:var(--tm);letter-spacing:.06em;text-transform:uppercase}
+.ni{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--rs);font-size:14px;font-weight:500;color:var(--ts);cursor:pointer;transition:all .2s;margin-bottom:2px}
+.ni:hover{background:var(--bg);color:var(--text)}.ni.act{background:var(--al);color:var(--accent);font-weight:600}
+.ni .ic{width:20px;text-align:center;font-size:16px}
+.sb-ft{margin-top:auto;padding:16px 14px;background:var(--bg);border-radius:var(--rs);text-align:center}
+.sb-ft p{font-size:12px;color:var(--ts);margin-bottom:10px;line-height:1.4}
+.sb-ft button{background:var(--accent);color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:var(--f);font-size:12px;font-weight:600;cursor:pointer}
+.mn{margin-left:240px;flex:1;padding:28px 32px;min-height:100vh}
+.tb{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.tb h1{font-size:24px;font-weight:700;letter-spacing:-.03em}
+.dp{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:13px;color:var(--ts);margin-left:14px;font-weight:500}
+.tr{display:flex;align-items:center;gap:14px}
+.sp{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--tm)}
+.sp .dt{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.sp .dt.err{background:var(--red)}.sp .dt.ldg{background:var(--amber);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.br{background:var(--card);border:1px solid var(--border);color:var(--text);font-family:var(--f);font-weight:500;font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+.br:hover{border-color:var(--accent);color:var(--accent)}.br.ld{opacity:.5;pointer-events:none}
+.av{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#D4B67A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff}
+.kg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.kc{background:var(--card);border-radius:var(--r);padding:22px 20px;box-shadow:var(--sh);transition:box-shadow .3s}.kc:hover{box-shadow:var(--shh)}
+.kh{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.kt{font-size:13px;font-weight:500;color:var(--ts)}
+.ki{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.kv{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:4px}
+.kv-range{font-size:13px;font-weight:600;color:var(--ts);margin-top:2px}
+.ks{font-size:12px;color:var(--tm);margin-top:4px}
+.cg{display:grid;gap:16px;margin-bottom:20px}
+.c21{grid-template-columns:2fr 1fr}.c11{grid-template-columns:1fr 1fr}.c1{grid-template-columns:1fr}
+.cc{background:var(--card);border-radius:var(--r);padding:22px 20px;box-shadow:var(--sh)}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.ct2{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.csu{font-size:12px;color:var(--tm);margin-top:2px}
+.cb{background:var(--bg);border-radius:8px;padding:5px 12px;font-size:12px;color:var(--ts);font-weight:500}
+.pr{display:flex;align-items:center;margin-bottom:12px;gap:12px}
+.pl{width:110px;font-size:13px;font-weight:500;text-align:right;flex-shrink:0}
+.pt2{flex:1;height:30px;background:var(--bg);border-radius:8px;overflow:hidden;position:relative}
+.pf2{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:600;color:#fff;transition:width .8s cubic-bezier(.25,.46,.45,.94);white-space:nowrap;position:absolute;left:0;top:0}
+.pf2.ghost{opacity:.25}
+.pm{width:100px;font-size:12px;color:var(--tm);flex-shrink:0}.pm strong{color:var(--text)}
+.df{display:flex;align-items:center;gap:24px}
+.dsv{width:150px;height:150px;flex-shrink:0}
+.li2{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px}
+.ld2{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.li2 .vl{color:var(--tm);margin-left:4px}
+.or2{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.onm{width:120px;font-size:13px;font-weight:500;text-align:right;flex-shrink:0}
+.otr{flex:1;height:26px;background:var(--bg);border-radius:8px;overflow:hidden;position:relative}
+.ofl{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:600;color:#fff;transition:width .8s ease;position:absolute;left:0;top:0}
+.ofl.ghost{opacity:.25}
+.om{width:90px;font-size:12px;color:var(--tm)}
+.ww{display:flex;align-items:center;justify-content:center;gap:28px;padding:16px 0}
+.ws{text-align:center}.ws .wn{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
+.ws .wl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--tm);margin-top:6px}
+.ws .wv{font-size:13px;color:var(--tm);margin-top:4px}
+.wdv{width:1px;height:70px;background:var(--border)}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--tm);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--border)}
+.tbl td{padding:12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}.tbl tr:hover{background:var(--bg)}
+.tbl .deal{font-weight:600}
+.tbl .overdue{color:var(--red);font-weight:600}.tbl .today{color:var(--amber);font-weight:600}.tbl .upcoming{color:var(--green)}
+.bs{display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:600}
+.bs-ev{background:var(--bbg);color:var(--blue)}.bs-qu{background:var(--pbg);color:var(--purple)}
+.bs-pr{background:var(--abg);color:var(--amber)}.bs-ne{background:rgba(196,162,101,.12);color:var(--gold)}
+.bs-wo{background:var(--gbg);color:var(--green)}.bs-lo{background:var(--rbg);color:var(--red)}
+.tv{font-weight:600;white-space:nowrap}
+.lo{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(240,240,245,.9);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;opacity:0;pointer-events:none;transition:opacity .3s}
+.lo.a{opacity:1;pointer-events:all}
+.spn{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+.lo p{margin-top:14px;font-size:13px;color:var(--tm)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nd{text-align:center;padding:40px;color:var(--tm);font-size:13px}
+@media(max-width:1100px){.kg{grid-template-columns:repeat(2,1fr)}.c21,.c11{grid-template-columns:1fr}}
+@media(max-width:800px){.sb{display:none}.mn{margin-left:0;padding:16px}.kg{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="lo" id="lo"><div class="spn"></div><p>Loading pipeline data...</p></div>
+<aside class="sb">
+  <div class="sb-logo"><div class="ico">L1</div><div><div class="txt">Layer 1</div><div class="sub">Sales Tracker</div></div></div>
+  <nav>
+    <div class="ni act"><span class="ic">📊</span> Analytics</div>
+    <div class="ni" onclick="window.open('https://layer1tech.sharepoint.com/sites/SalesTracker/Lists/Sales%20Pipeline/AllItems.aspx','_blank')"><span class="ic">📋</span> Pipeline</div>
+    <div class="ni"><span class="ic">📁</span> Proposals</div>
+    <div class="ni"><span class="ic">👥</span> Contacts</div>
+  </nav>
+  <div style="flex:1"></div>
+  <div class="sb-ft"><p>Need help?<br>Reach out to the team</p><button onclick="window.open('https://teams.microsoft.com','_blank')">Open Teams</button></div>
+</aside>
+<div class="mn">
+  <div class="tb">
+    <div style="display:flex;align-items:center"><h1>Analytics</h1><span class="dp" id="dp">Loading...</span></div>
+    <div class="tr">
+      <div class="sp"><div class="dt" id="sDot"></div><span id="sTxt">Connecting...</span></div>
+      <button class="br" id="bRef" onclick="loadData()">↻ Refresh</button>
+      <div class="av">AB</div>
+    </div>
+  </div>
+  <div class="kg">
+    <div class="kc"><div class="kh"><span class="kt">Total Pipeline</span><div class="ki" style="background:var(--al)">💰</div></div><div class="kv" id="k1">—</div><div class="kv-range" id="k1r"></div><div class="ks" id="k1s">Loading...</div></div>
+    <div class="kc"><div class="kh"><span class="kt">Active Deals</span><div class="ki" style="background:var(--bbg)">📈</div></div><div class="kv" id="k2">—</div><div class="ks">Excl. Won &amp; Lost</div></div>
+    <div class="kc"><div class="kh"><span class="kt">This Quarter</span><div class="ki" style="background:var(--gbg)">🎯</div></div><div class="kv" id="k3" style="color:var(--green)">—</div><div class="kv-range" id="k3r"></div><div class="ks" id="k3s">Loading...</div></div>
+    <div class="kc"><div class="kh"><span class="kt">Avg Deal Size</span><div class="ki" style="background:var(--abg)">⚡</div></div><div class="kv" id="k5">—</div><div class="kv-range" id="k5r"></div><div class="ks">Across active deals</div></div>
+  </div>
+  <div class="cg c21">
+    <div class="cc"><div class="ch"><div><div class="ct2">Sales Pipeline</div><div class="csu">Deal value range by stage (₹ Crores)</div></div><span class="cb" id="pT">—</span></div><div id="sS"></div></div>
+    <div class="cc"><div class="ch"><div><div class="ct2">Win / Loss</div><div class="csu">Closed deals performance</div></div></div><div id="sWL"></div></div>
+  </div>
+  <div class="cg c11">
+    <div class="cc"><div class="ch"><div><div class="ct2">Deals by Vertical</div><div class="csu">Active pipeline distribution</div></div></div><div id="sV"></div></div>
+    <div class="cc"><div class="ch"><div><div class="ct2">Deals by Owner</div><div class="csu">Active pipeline value range (₹ Crores)</div></div></div><div id="sO"></div></div>
+  </div>
+  <div class="cg c1">
+    <div class="cc"><div class="ch"><div><div class="ct2">All Deals — Pipeline Overview</div><div class="csu">Complete project list with stage, value range, and owner</div></div><span class="cb" id="allCt">—</span></div><div id="sAll"></div></div>
+  </div>
+  <div class="cg c1">
+    <div class="cc"><div class="ch"><div><div class="ct2">Upcoming Actions</div><div class="csu">Tasks due in the next 14 days</div></div><span class="cb" id="aCt">—</span></div><div id="sA"></div></div>
+  </div>
+</div>
+<script>
+// ═══════════════════════════════════════════════
+// CONFIG — CORRECT COLUMN NAMES FROM SHAREPOINT API
+// Verified from actual API response on 2026-03-31
+// ═══════════════════════════════════════════════
+const C={
+  siteUrl:'https://layer1tech.sharepoint.com/sites/SalesTracker',
+  listName:'Sales Pipeline',
+  stages:[{n:'Evaluating',c:'#4DA3FF'},{n:'Qualified',c:'#9B6ED0'},{n:'Proposal',c:'#FFB946'},{n:'Negotiation',c:'#C4A265'},{n:'Won',c:'#00C48C'},{n:'Lost',c:'#FF5B5B'}],
+  vc:{'Luxury Residence':'#C4A265','Commercial HQ':'#4DA3FF','Healthcare':'#00C48C','Hospitality':'#9B6ED0','Infrastructure & Transport':'#FF8A5C','Education':'#3AAFB9','Mixed Use':'#FFB946'},
+  oc:['#6C5CE7','#4DA3FF','#00C48C','#FFB946','#FF8A5C','#9B6ED0','#3AAFB9'],
+  // Owner ID to name mapping (from your team)
+  ownerMap: { '11': 'Ankur Bhatt', '14': 'Awish Thakar', '15': 'Dhruv Pandya' }
+};
+const AS=C.stages.filter(s=>s.n!=='Won'&&s.n!=='Lost').map(s=>s.n);
+
+function parseRange(val){
+  if(val===null||val===undefined||val==='')return{min:0,max:0};
+  const str=val.toString().trim();
+  let m=str.match(/^(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)$/);
+  if(m)return{min:parseFloat(m[1]),max:parseFloat(m[2])};
+  m=str.match(/^(\d+\.?\d*)\s+to\s+(\d+\.?\d*)$/i);
+  if(m)return{min:parseFloat(m[1]),max:parseFloat(m[2])};
+  if(/^0\d+$/.test(str)){const n=parseFloat(str);return{min:0,max:n}}
+  const n=parseFloat(str);
+  if(!isNaN(n))return{min:n,max:n};
+  return{min:0,max:0};
+}
+
+function fmtR(min,max){if(min===max)return`₹${min} Cr`;return`₹${min} – ${max} Cr`}
+function fmtD(d){return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}
+function getQ(d){const q=Math.ceil((d.getMonth()+1)/3);return`Q${q} FY${d.getFullYear()}`}
+function getQR(d){const q=Math.ceil((d.getMonth()+1)/3);return{s:new Date(d.getFullYear(),(q-1)*3,1),e:new Date(d.getFullYear(),q*3,0,23,59,59)}}
+function dayD(a,b){return Math.round((a-b)/864e5)}
+function stageBadge(st){const m={Evaluating:'ev',Qualified:'qu',Proposal:'pr',Negotiation:'ne',Won:'wo',Lost:'lo'};return`<span class="bs bs-${m[st]||'ev'}">${st}</span>`}
+
+// ═══════════════════════════════════════════════
+// SHAREPOINT API FETCH — Using correct field names
+// ═══════════════════════════════════════════════
+async function fetchSP(){
+  // Use the verified column names from the API response
+  const u=`${C.siteUrl}/_api/web/lists/getbytitle('${encodeURIComponent(C.listName)}')/items?$top=500`;
+  const r=await fetch(u,{
+    headers:{'Accept':'application/json;odata=verbose'},
+    credentials:'include'
+  });
+  if(!r.ok)throw new Error(`HTTP ${r.status}`);
+  const data=await r.json();
+  return data.d.results;
+}
+
+// ═══════════════════════════════════════════════
+// PARSE — Maps SharePoint internal names to our model
+// Uses actual column names from the API: board_x0020_choice, 
+// DealValue, Vertical, Priority, OwnerId, etc.
+// ═══════════════════════════════════════════════
+function parse(raw){
+  return raw.map(i=>{
+    // Owner: resolve from ID map or try string fields
+    let ow='—';
+    const oid=i.OwnerId||i.OwnerStringId;
+    if(oid && C.ownerMap[oid.toString()]){
+      ow=C.ownerMap[oid.toString()];
+    } else if(oid){
+      ow='Team Member #'+oid;
+    }
+
+    // Deal value: try multiple possible field names
+    const dvRaw = i.DealValue || i.DealValue_x002d_1 || i.Deal_x0020_Value || 
+                  i.Deal_x0020_Value_x0020__x0028_Cr || i.Deal_x0020_Value_x0020__x0028_La || 
+                  i.OData__x0044_ealValue || '';
+    const range=parseRange(dvRaw);
+
+    // Stage: board_x0020_choice is the confirmed internal name
+    const stage=i.board_x0020_choice||i.Stage||'—';
+
+    return{
+      title:i.Title||'—',
+      stage:stage,
+      min:range.min, max:range.max, mid:(range.min+range.max)/2,
+      owner:ow,
+      vertical:i.Vertical||'—',
+      priority:i.Priority||'—',
+      nextAction:i.NextAction||i.Next_x0020_Action||'',
+      nextActionDate:(i.NextActionDate||i.Next_x0020_Action_x0020_Date)?new Date(i.NextActionDate||i.Next_x0020_Action_x0020_Date):null,
+      expectedClose:(i.ExpectedCloseDate||i.Expected_x0020_Close_x0020_Date)?new Date(i.ExpectedCloseDate||i.Expected_x0020_Close_x0020_Date):null,
+      mainContact:i.MainContact||i.Main_x0020_Contact||'',
+      phone:i.PhoneNumber||'',
+      email:i.EmailAddress||''
+    };
+  });
+}
+
+// ═══════════════════════════════════════════════
+// FALLBACK DATA — Your actual deals from Teams/Slack
+// ═══════════════════════════════════════════════
+function fallback(){
+  return[
+    {title:'Zydus Hospitals',stage:'Qualified',min:1,max:5,mid:3,owner:'Ankur Bhatt',vertical:'Healthcare',priority:'High',nextAction:'Final presentation to Amandeep sir',nextActionDate:new Date('2026-04-02'),expectedClose:new Date('2026-06-30'),mainContact:'Amandeep Singh'},
+    {title:'Coast guard, Gandhinagar',stage:'Qualified',min:3,max:5,mid:4,owner:'Awish Thakar',vertical:'Infrastructure & Transport',priority:'High',nextAction:'Share BOQ to Dhruv for processing',nextActionDate:new Date('2026-03-28'),expectedClose:new Date('2026-06-30'),mainContact:'Shyam Suthar'},
+    {title:'Ahmedabad Airport Expansion',stage:'Qualified',min:15,max:20,mid:17.5,owner:'Awish Thakar',vertical:'Infrastructure & Transport',priority:'High',nextAction:'Detailed Presentation on CEO requirements',nextActionDate:new Date('2026-04-05'),expectedClose:new Date('2026-09-30'),mainContact:'Alfonso Huertas'},
+    {title:'Studio Vistap Kharas',stage:'Qualified',min:2,max:3,mid:2.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Provide revised proposal',nextActionDate:new Date('2026-04-01'),expectedClose:new Date('2026-06-30'),mainContact:'Shyam Suthar'},
+    {title:'Bindal Residence',stage:'Qualified',min:0,max:1,mid:0.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Provide the proposal',nextActionDate:new Date('2026-04-03'),expectedClose:null,mainContact:'Ansh Bindal'},
+    {title:'Sanjay Lalbhai House',stage:'Qualified',min:0,max:1,mid:0.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Prepare Security design & demo',nextActionDate:new Date('2026-04-07'),expectedClose:null,mainContact:'Vineet Bhavsar'},
+    {title:'Torrent Hospitals',stage:'Evaluating',min:3,max:5,mid:4,owner:'Awish Thakar',vertical:'Healthcare',priority:'High',nextAction:'Prepare a presentation for the client.',nextActionDate:new Date('2026-04-03'),expectedClose:null,mainContact:'Bhavesh Kathariya'},
+    {title:'NAM.Tech',stage:'Evaluating',min:0,max:1,mid:0.5,owner:'Ankur Bhatt',vertical:'Education',priority:'High',nextAction:'',nextActionDate:null,expectedClose:null,mainContact:''},
+  ];
+}
+
+// ═══════════════════════════════════════════════
+// RENDERERS
+// ═══════════════════════════════════════════════
+function rKPI(deals){
+  const act=deals.filter(d=>AS.includes(d.stage));
+  const tMin=act.reduce((s,d)=>s+d.min,0),tMax=act.reduce((s,d)=>s+d.max,0);
+  document.getElementById('k1').textContent=`₹${tMin} – ${tMax} Cr`;
+  document.getElementById('k1r').textContent=`Midpoint: ₹${((tMin+tMax)/2).toFixed(1)} Cr`;
+  document.getElementById('k1s').textContent=`${act.length} active deals`;
+  document.getElementById('k2').textContent=act.length;
+  const now=new Date(),qr=getQR(now),qd=act.filter(d=>d.expectedClose&&d.expectedClose>=qr.s&&d.expectedClose<=qr.e);
+  const qMin=qd.reduce((s,d)=>s+d.min,0),qMax=qd.reduce((s,d)=>s+d.max,0);
+  document.getElementById('k3').textContent=`₹${qMin} – ${qMax} Cr`;
+  document.getElementById('k3r').textContent=`${qd.length} deals this quarter`;
+  document.getElementById('k3s').textContent='';
+  if(act.length>0){document.getElementById('k5').textContent=`₹${(tMin/act.length).toFixed(1)} – ${(tMax/act.length).toFixed(1)} Cr`;document.getElementById('k5r').textContent=''}
+  else{document.getElementById('k5').textContent='—'}
+  document.getElementById('pT').textContent=`₹${tMin} – ${tMax} Cr`;
+}
+
+function rStages(deals){
+  const el=document.getElementById('sS');
+  const allMax=Math.max(...C.stages.map(s=>deals.filter(d=>d.stage===s.n).reduce((a,d)=>a+d.max,0)),1);
+  let h='';C.stages.forEach(s=>{
+    const sd=deals.filter(d=>d.stage===s.n);
+    const sMin=sd.reduce((a,d)=>a+d.min,0),sMax=sd.reduce((a,d)=>a+d.max,0);
+    const pMin=Math.max((sMin/allMax)*100,sd.length>0?4:0);
+    const pMax=Math.max((sMax/allMax)*100,sd.length>0?8:0);
+    const label=sMin===sMax?(sMin>0?`₹${sMin} Cr`:''):`₹${sMin} – ${sMax} Cr`;
+    h+=`<div class="pr"><div class="pl">${s.n}</div><div class="pt2"><div class="pf2 ghost" style="width:${pMax}%;background:${s.c}"></div><div class="pf2" style="width:${pMin}%;background:${s.c}">${sMin>0?label:''}</div></div><div class="pm"><strong>${sd.length}</strong> deal${sd.length!==1?'s':''}</div></div>`;
+  });el.innerHTML=h;
+}
+
+function rWL(deals){
+  const el=document.getElementById('sWL'),w=deals.filter(d=>d.stage==='Won'),l=deals.filter(d=>d.stage==='Lost');
+  const wMin=w.reduce((s,d)=>s+d.min,0),wMax=w.reduce((s,d)=>s+d.max,0);
+  const lMin=l.reduce((s,d)=>s+d.min,0),lMax=l.reduce((s,d)=>s+d.max,0);
+  const cl=w.length+l.length;
+  el.innerHTML=`<div class="ww"><div class="ws"><div class="wn" style="color:var(--green)">${w.length}</div><div class="wl">Won</div><div class="wv">${fmtR(wMin,wMax)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--red)">${l.length}</div><div class="wl">Lost</div><div class="wv">${fmtR(lMin,lMax)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--accent)">${cl>0?Math.round((w.length/cl)*100)+'%':'—'}</div><div class="wl">Win Rate</div></div></div>`;
+}
+
+function rVert(deals){
+  const el=document.getElementById('sV'),act=deals.filter(d=>AS.includes(d.stage)),vt={};
+  act.forEach(d=>{if(!vt[d.vertical])vt[d.vertical]={c:0,mn:0,mx:0};vt[d.vertical].c++;vt[d.vertical].mn+=d.min;vt[d.vertical].mx+=d.max});
+  const sr=Object.entries(vt).sort((a,b)=>b[1].mx-a[1].mx),tot=act.length||1;
+  let segs='',off=0;const R=55,ci=2*Math.PI*R;
+  sr.forEach(([n,d])=>{const p=d.c/tot,da=p*ci,co=C.vc[n]||'#A0A0B0';segs+=`<circle cx="75" cy="75" r="${R}" fill="none" stroke="${co}" stroke-width="20" stroke-dasharray="${da} ${ci-da}" stroke-dashoffset="${-off}" transform="rotate(-90 75 75)"/>`;off+=da});
+  let lg='';sr.forEach(([n,d])=>{lg+=`<div class="li2"><div class="ld2" style="background:${C.vc[n]||'#A0A0B0'}"></div><strong>${n}</strong><span class="vl">· ${d.c} deal${d.c!==1?'s':''} · ${fmtR(d.mn,d.mx)}</span></div>`});
+  el.innerHTML=`<div class="df"><svg class="dsv" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${R}" fill="none" stroke="#F0F0F5" stroke-width="20"/>${segs}<text x="75" y="71" text-anchor="middle" font-family="var(--f)" font-size="26" font-weight="700" fill="var(--text)">${act.length}</text><text x="75" y="90" text-anchor="middle" font-family="var(--f)" font-size="10" font-weight="500" fill="var(--tm)">DEALS</text></svg><div>${lg}</div></div>`;
+}
+
+function rOwn(deals){
+  const el=document.getElementById('sO'),act=deals.filter(d=>AS.includes(d.stage)),ow={};
+  act.forEach(d=>{if(!ow[d.owner])ow[d.owner]={c:0,mn:0,mx:0};ow[d.owner].c++;ow[d.owner].mn+=d.min;ow[d.owner].mx+=d.max});
+  const sr=Object.entries(ow).sort((a,b)=>b[1].mx-a[1].mx),mxAll=Math.max(...sr.map(([,d])=>d.mx),1);
+  let h='';sr.forEach(([n,d],i)=>{const co=C.oc[i%C.oc.length];
+    const pMin=Math.max((d.mn/mxAll)*100,8);const pMax=Math.max((d.mx/mxAll)*100,12);
+    h+=`<div class="or2"><div class="onm">${n}</div><div class="otr"><div class="ofl ghost" style="width:${pMax}%;background:${co}"></div><div class="ofl" style="width:${pMin}%;background:${co}">${fmtR(d.mn,d.mx)}</div></div><div class="om">${d.c} deal${d.c!==1?'s':''}</div></div>`});
+  el.innerHTML=h||'<div class="nd">No active deals</div>';
+}
+
+function rAll(deals){
+  const el=document.getElementById('sAll');
+  const stageOrder={Evaluating:0,Qualified:1,Proposal:2,Negotiation:3,Won:4,Lost:5};
+  const sorted=[...deals].sort((a,b)=>(stageOrder[a.stage]||99)-(stageOrder[b.stage]||99));
+  document.getElementById('allCt').textContent=deals.length+' deal'+(deals.length!==1?'s':'');
+  let rows='';sorted.forEach(d=>{
+    rows+=`<tr><td class="deal">${d.title}</td><td>${stageBadge(d.stage)}</td><td class="tv">${fmtR(d.min,d.max)}</td><td>${d.vertical}</td><td>${d.owner}</td><td>${d.expectedClose?fmtD(d.expectedClose):'—'}</td><td>${d.nextAction||'—'}</td></tr>`;
+  });
+  el.innerHTML=`<table class="tbl"><thead><tr><th>Project / Deal</th><th>Stage</th><th>Value Range</th><th>Vertical</th><th>Owner</th><th>Expected Close</th><th>Next Action</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function rAct(deals){
+  const el=document.getElementById('sA'),now=new Date();now.setHours(0,0,0,0);
+  const up=deals.filter(d=>d.nextActionDate&&d.nextAction&&AS.includes(d.stage)).sort((a,b)=>a.nextActionDate-b.nextActionDate).slice(0,10);
+  document.getElementById('aCt').textContent=up.length+' action'+(up.length!==1?'s':'');
+  if(!up.length){el.innerHTML='<div class="nd">No upcoming actions scheduled</div>';return}
+  let rows='';up.forEach(d=>{
+    const diff=dayD(d.nextActionDate,now);let dc='upcoming',dl=fmtD(d.nextActionDate);
+    if(diff<0){dc='overdue';dl+=` (${Math.abs(diff)}d overdue)`}else if(diff===0){dc='today';dl+=' (Today)'}else if(diff<=3){dc='today';dl+=` (in ${diff}d)`}
+    rows+=`<tr><td class="deal">${d.title}</td><td>${d.nextAction}</td><td class="${dc}">${dl}</td><td>${d.owner}</td><td>${stageBadge(d.stage)}</td></tr>`;
+  });
+  el.innerHTML=`<table class="tbl"><thead><tr><th>Deal</th><th>Action Required</th><th>Due Date</th><th>Owner</th><th>Stage</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ═══════════════════════════════════════════════
+// MAIN LOADER — Tries live API, falls back gracefully
+// ═══════════════════════════════════════════════
+let live=true;
+async function loadData(){
+  const lo=document.getElementById('lo'),sd=document.getElementById('sDot'),st=document.getElementById('sTxt'),bt=document.getElementById('bRef');
+  lo.classList.add('a');sd.className='dt ldg';st.textContent='Fetching...';bt.classList.add('ld');
+  let deals=[];
+  try{
+    if(live){
+      const raw=await fetchSP();
+      deals=parse(raw);
+      if(deals.length>0){
+        sd.className='dt';
+        st.textContent=`Live · ${deals.length} deals from SharePoint`;
+      } else {
+        throw new Error('No items returned');
+      }
+    } else {
+      throw new Error('Using cached');
+    }
+  } catch(e){
+    console.log('API status:',e.message,'— using cached data');
+    deals=fallback();
+    live=false;
+    sd.className='dt err';
+    st.textContent='Offline · cached data (API access pending)';
+  }
+  const now=new Date();document.getElementById('dp').textContent=fmtD(now)+' · '+getQ(now);
+  rKPI(deals);rStages(deals);rWL(deals);rVert(deals);rOwn(deals);rAll(deals);rAct(deals);
+  lo.classList.remove('a');bt.classList.remove('ld');
+}
+document.addEventListener('DOMContentLoaded',()=>{loadData();setInterval(loadData,3e5)});
+</script>
+</body>
+</html>

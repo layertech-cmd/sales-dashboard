@@ -37,7 +37,7 @@ body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;mi
 .kt{font-size:13px;font-weight:500;color:var(--ts)}
 .ki{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .kv{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.15;margin-bottom:4px}
-.kv-range{font-size:13px;font-weight:600;color:var(--ts);margin-top:2px}
+.kvr{font-size:13px;font-weight:600;color:var(--ts);margin-top:2px}
 .ks{font-size:12px;color:var(--tm);margin-top:4px}
 .cg{display:grid;gap:16px;margin-bottom:20px}
 .c21{grid-template-columns:2fr 1fr}.c11{grid-template-columns:1fr 1fr}.c1{grid-template-columns:1fr}
@@ -52,22 +52,18 @@ body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;mi
 .pf2{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:600;color:#fff;transition:width .8s cubic-bezier(.25,.46,.45,.94);white-space:nowrap;position:absolute;left:0;top:0}
 .pf2.ghost{opacity:.25}
 .pm{width:100px;font-size:12px;color:var(--tm);flex-shrink:0}.pm strong{color:var(--text)}
-.df{display:flex;align-items:center;gap:24px}
-.dsv{width:150px;height:150px;flex-shrink:0}
+.df{display:flex;align-items:center;gap:24px}.dsv{width:150px;height:150px;flex-shrink:0}
 .li2{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px}
-.ld2{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.li2 .vl{color:var(--tm);margin-left:4px}
+.ld2{width:10px;height:10px;border-radius:50%;flex-shrink:0}.li2 .vl{color:var(--tm);margin-left:4px}
 .or2{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .onm{width:120px;font-size:13px;font-weight:500;text-align:right;flex-shrink:0}
 .otr{flex:1;height:26px;background:var(--bg);border-radius:8px;overflow:hidden;position:relative}
 .ofl{height:100%;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:600;color:#fff;transition:width .8s ease;position:absolute;left:0;top:0}
-.ofl.ghost{opacity:.25}
-.om{width:90px;font-size:12px;color:var(--tm)}
+.ofl.ghost{opacity:.25}.om{width:90px;font-size:12px;color:var(--tm)}
 .ww{display:flex;align-items:center;justify-content:center;gap:28px;padding:16px 0}
 .ws{text-align:center}.ws .wn{font-size:40px;font-weight:700;letter-spacing:-.03em;line-height:1}
 .ws .wl{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--tm);margin-top:6px}
-.ws .wv{font-size:13px;color:var(--tm);margin-top:4px}
-.wdv{width:1px;height:70px;background:var(--border)}
+.ws .wv{font-size:13px;color:var(--tm);margin-top:4px}.wdv{width:1px;height:70px;background:var(--border)}
 .tbl{width:100%;border-collapse:collapse}
 .tbl th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--tm);font-weight:500;padding:10px 12px;border-bottom:1px solid var(--border)}
 .tbl td{padding:12px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle}
@@ -90,7 +86,7 @@ body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;mi
 </style>
 </head>
 <body>
-<div class="lo" id="lo"><div class="spn"></div><p>Loading pipeline data...</p></div>
+<div class="lo" id="lo"><div class="spn"></div><p>Loading live pipeline data...</p></div>
 <aside class="sb">
   <div class="sb-logo"><div class="ico">L1</div><div><div class="txt">Layer 1</div><div class="sub">Sales Tracker</div></div></div>
   <nav>
@@ -112,10 +108,10 @@ body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;mi
     </div>
   </div>
   <div class="kg">
-    <div class="kc"><div class="kh"><span class="kt">Total Pipeline</span><div class="ki" style="background:var(--al)">💰</div></div><div class="kv" id="k1">—</div><div class="kv-range" id="k1r"></div><div class="ks" id="k1s">Loading...</div></div>
+    <div class="kc"><div class="kh"><span class="kt">Total Pipeline</span><div class="ki" style="background:var(--al)">💰</div></div><div class="kv" id="k1">—</div><div class="kvr" id="k1r"></div><div class="ks" id="k1s">Loading...</div></div>
     <div class="kc"><div class="kh"><span class="kt">Active Deals</span><div class="ki" style="background:var(--bbg)">📈</div></div><div class="kv" id="k2">—</div><div class="ks">Excl. Won &amp; Lost</div></div>
-    <div class="kc"><div class="kh"><span class="kt">This Quarter</span><div class="ki" style="background:var(--gbg)">🎯</div></div><div class="kv" id="k3" style="color:var(--green)">—</div><div class="kv-range" id="k3r"></div><div class="ks" id="k3s">Loading...</div></div>
-    <div class="kc"><div class="kh"><span class="kt">Avg Deal Size</span><div class="ki" style="background:var(--abg)">⚡</div></div><div class="kv" id="k5">—</div><div class="kv-range" id="k5r"></div><div class="ks">Across active deals</div></div>
+    <div class="kc"><div class="kh"><span class="kt">This Quarter</span><div class="ki" style="background:var(--gbg)">🎯</div></div><div class="kv" id="k3" style="color:var(--green)">—</div><div class="kvr" id="k3r"></div><div class="ks" id="k3s"></div></div>
+    <div class="kc"><div class="kh"><span class="kt">Avg Deal Size</span><div class="ki" style="background:var(--abg)">⚡</div></div><div class="kv" id="k5">—</div><div class="ks">Across active deals</div></div>
   </div>
   <div class="cg c21">
     <div class="cc"><div class="ch"><div><div class="ct2">Sales Pipeline</div><div class="csu">Deal value range by stage (₹ Crores)</div></div><span class="cb" id="pT">—</span></div><div id="sS"></div></div>
@@ -133,229 +129,157 @@ body{background:var(--bg);font-family:var(--f);color:var(--text);display:flex;mi
   </div>
 </div>
 <script>
-// ═══════════════════════════════════════════════
-// CONFIG — CORRECT COLUMN NAMES FROM SHAREPOINT API
-// Verified from actual API response on 2026-03-31
-// ═══════════════════════════════════════════════
-const C={
-  siteUrl:'https://layer1tech.sharepoint.com/sites/SalesTracker',
-  listName:'Sales Pipeline',
-  stages:[{n:'Evaluating',c:'#4DA3FF'},{n:'Qualified',c:'#9B6ED0'},{n:'Proposal',c:'#FFB946'},{n:'Negotiation',c:'#C4A265'},{n:'Won',c:'#00C48C'},{n:'Lost',c:'#FF5B5B'}],
-  vc:{'Luxury Residence':'#C4A265','Commercial HQ':'#4DA3FF','Healthcare':'#00C48C','Hospitality':'#9B6ED0','Infrastructure & Transport':'#FF8A5C','Education':'#3AAFB9','Mixed Use':'#FFB946'},
-  oc:['#6C5CE7','#4DA3FF','#00C48C','#FFB946','#FF8A5C','#9B6ED0','#3AAFB9'],
-  // Owner ID to name mapping (from your team)
-  ownerMap: { '11': 'Ankur Bhatt', '14': 'Awish Thakar', '15': 'Dhruv Pandya' }
-};
-const AS=C.stages.filter(s=>s.n!=='Won'&&s.n!=='Lost').map(s=>s.n);
+// ═══ CONFIG ═══
+const DATA_URL='https://raw.githubusercontent.com/layertech-cmd/sales-dashboard/main/data.json';
+const STAGES=[{n:'Evaluating',c:'#4DA3FF'},{n:'Qualified',c:'#9B6ED0'},{n:'Proposal',c:'#FFB946'},{n:'Negotiation',c:'#C4A265'},{n:'Won',c:'#00C48C'},{n:'Lost',c:'#FF5B5B'}];
+const AS=STAGES.filter(s=>s.n!=='Won'&&s.n!=='Lost').map(s=>s.n);
+const VC={'Luxury Residence':'#C4A265','Commercial HQ':'#4DA3FF','Healthcare':'#00C48C','Hospitality':'#9B6ED0','Infrastructure & Transport':'#FF8A5C','Education':'#3AAFB9','Education Use':'#3AAFB9','Mixed Use':'#FFB946'};
+const OC=['#6C5CE7','#4DA3FF','#00C48C','#FFB946','#FF8A5C','#9B6ED0','#3AAFB9'];
 
-function parseRange(val){
-  if(val===null||val===undefined||val==='')return{min:0,max:0};
-  const str=val.toString().trim();
-  let m=str.match(/^(\d+\.?\d*)\s*[-–—]\s*(\d+\.?\d*)$/);
+// ═══ PARSE DEAL VALUE RANGE FROM SHAREPOINT CHOICE ═══
+function parseVal(dv){
+  if(!dv)return{min:0,max:0};
+  const v=(typeof dv==='object'&&dv.Value)?dv.Value:dv.toString();
+  const s=v.toLowerCase().trim();
+  if(s.includes('below'))return{min:0,max:1};
+  if(s.includes('above')){const n=parseFloat(s.replace(/[^0-9.]/g,''))||10;return{min:n,max:n*2}}
+  const m=s.match(/([\d.]+)\s*cr?\s*to\s*([\d.]+)/i);
   if(m)return{min:parseFloat(m[1]),max:parseFloat(m[2])};
-  m=str.match(/^(\d+\.?\d*)\s+to\s+(\d+\.?\d*)$/i);
-  if(m)return{min:parseFloat(m[1]),max:parseFloat(m[2])};
-  if(/^0\d+$/.test(str)){const n=parseFloat(str);return{min:0,max:n}}
-  const n=parseFloat(str);
+  const m2=s.match(/([\d.]+)\s*[-–]\s*([\d.]+)/);
+  if(m2)return{min:parseFloat(m2[1]),max:parseFloat(m2[2])};
+  const n=parseFloat(s.replace(/[^0-9.]/g,''));
   if(!isNaN(n))return{min:n,max:n};
   return{min:0,max:0};
 }
 
-function fmtR(min,max){if(min===max)return`₹${min} Cr`;return`₹${min} – ${max} Cr`}
-function fmtD(d){return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}
-function getQ(d){const q=Math.ceil((d.getMonth()+1)/3);return`Q${q} FY${d.getFullYear()}`}
-function getQR(d){const q=Math.ceil((d.getMonth()+1)/3);return{s:new Date(d.getFullYear(),(q-1)*3,1),e:new Date(d.getFullYear(),q*3,0,23,59,59)}}
-function dayD(a,b){return Math.round((a-b)/864e5)}
-function stageBadge(st){const m={Evaluating:'ev',Qualified:'qu',Proposal:'pr',Negotiation:'ne',Won:'wo',Lost:'lo'};return`<span class="bs bs-${m[st]||'ev'}">${st}</span>`}
-
-// ═══════════════════════════════════════════════
-// SHAREPOINT API FETCH — Using correct field names
-// ═══════════════════════════════════════════════
-async function fetchSP(){
-  // Use the verified column names from the API response
-  const u=`${C.siteUrl}/_api/web/lists/getbytitle('${encodeURIComponent(C.listName)}')/items?$top=500`;
-  const r=await fetch(u,{
-    headers:{'Accept':'application/json;odata=verbose'},
-    credentials:'include'
-  });
-  if(!r.ok)throw new Error(`HTTP ${r.status}`);
-  const data=await r.json();
-  return data.d.results;
-}
-
-// ═══════════════════════════════════════════════
-// PARSE — Maps SharePoint internal names to our model
-// Uses actual column names from the API: board_x0020_choice, 
-// DealValue, Vertical, Priority, OwnerId, etc.
-// ═══════════════════════════════════════════════
+// ═══ PARSE SHAREPOINT DATA ═══
 function parse(raw){
   return raw.map(i=>{
-    // Owner: resolve from ID map or try string fields
-    let ow='—';
-    const oid=i.OwnerId||i.OwnerStringId;
-    if(oid && C.ownerMap[oid.toString()]){
-      ow=C.ownerMap[oid.toString()];
-    } else if(oid){
-      ow='Team Member #'+oid;
-    }
-
-    // Deal value: try multiple possible field names
-    const dvRaw = i.DealValue || i.DealValue_x002d_1 || i.Deal_x0020_Value || 
-                  i.Deal_x0020_Value_x0020__x0028_Cr || i.Deal_x0020_Value_x0020__x0028_La || 
-                  i.OData__x0044_ealValue || '';
-    const range=parseRange(dvRaw);
-
-    // Stage: board_x0020_choice is the confirmed internal name
-    const stage=i.board_x0020_choice||i.Stage||'—';
-
+    const range=parseVal(i.DealValue);
     return{
       title:i.Title||'—',
-      stage:stage,
-      min:range.min, max:range.max, mid:(range.min+range.max)/2,
-      owner:ow,
-      vertical:i.Vertical||'—',
-      priority:i.Priority||'—',
-      nextAction:i.NextAction||i.Next_x0020_Action||'',
-      nextActionDate:(i.NextActionDate||i.Next_x0020_Action_x0020_Date)?new Date(i.NextActionDate||i.Next_x0020_Action_x0020_Date):null,
-      expectedClose:(i.ExpectedCloseDate||i.Expected_x0020_Close_x0020_Date)?new Date(i.ExpectedCloseDate||i.Expected_x0020_Close_x0020_Date):null,
-      mainContact:i.MainContact||i.Main_x0020_Contact||'',
+      stage:(i.board_x0020_choice&&i.board_x0020_choice.Value)||i.board_x0020_choice||'—',
+      min:range.min,max:range.max,
+      dealValueLabel:(i.DealValue&&i.DealValue.Value)||'—',
+      owner:(i.Owner&&i.Owner.DisplayName)||'—',
+      ownerEmail:(i.Owner&&i.Owner.Email)||'',
+      vertical:(i.Vertical&&i.Vertical.Value)||i.Vertical||'—',
+      priority:(i.Priority&&i.Priority.Value)||i.Priority||'—',
+      coes:Array.isArray(i.COEInvolved)?i.COEInvolved.map(c=>c.Value||c).filter(Boolean):[],
+      nextAction:i.NextAction||'',
+      nextActionDate:i.NextActionDate?new Date(i.NextActionDate):null,
+      mainContact:i.MainContact||'',
       phone:i.PhoneNumber||'',
-      email:i.EmailAddress||''
+      email:i.EmailAddress||'',
+      modified:i.Modified?new Date(i.Modified):null
     };
   });
 }
 
-// ═══════════════════════════════════════════════
-// FALLBACK DATA — Your actual deals from Teams/Slack
-// ═══════════════════════════════════════════════
-function fallback(){
-  return[
-    {title:'Zydus Hospitals',stage:'Qualified',min:1,max:5,mid:3,owner:'Ankur Bhatt',vertical:'Healthcare',priority:'High',nextAction:'Final presentation to Amandeep sir',nextActionDate:new Date('2026-04-02'),expectedClose:new Date('2026-06-30'),mainContact:'Amandeep Singh'},
-    {title:'Coast guard, Gandhinagar',stage:'Qualified',min:3,max:5,mid:4,owner:'Awish Thakar',vertical:'Infrastructure & Transport',priority:'High',nextAction:'Share BOQ to Dhruv for processing',nextActionDate:new Date('2026-03-28'),expectedClose:new Date('2026-06-30'),mainContact:'Shyam Suthar'},
-    {title:'Ahmedabad Airport Expansion',stage:'Qualified',min:15,max:20,mid:17.5,owner:'Awish Thakar',vertical:'Infrastructure & Transport',priority:'High',nextAction:'Detailed Presentation on CEO requirements',nextActionDate:new Date('2026-04-05'),expectedClose:new Date('2026-09-30'),mainContact:'Alfonso Huertas'},
-    {title:'Studio Vistap Kharas',stage:'Qualified',min:2,max:3,mid:2.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Provide revised proposal',nextActionDate:new Date('2026-04-01'),expectedClose:new Date('2026-06-30'),mainContact:'Shyam Suthar'},
-    {title:'Bindal Residence',stage:'Qualified',min:0,max:1,mid:0.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Provide the proposal',nextActionDate:new Date('2026-04-03'),expectedClose:null,mainContact:'Ansh Bindal'},
-    {title:'Sanjay Lalbhai House',stage:'Qualified',min:0,max:1,mid:0.5,owner:'Awish Thakar',vertical:'Luxury Residence',priority:'High',nextAction:'Prepare Security design & demo',nextActionDate:new Date('2026-04-07'),expectedClose:null,mainContact:'Vineet Bhavsar'},
-    {title:'Torrent Hospitals',stage:'Evaluating',min:3,max:5,mid:4,owner:'Awish Thakar',vertical:'Healthcare',priority:'High',nextAction:'Prepare a presentation for the client.',nextActionDate:new Date('2026-04-03'),expectedClose:null,mainContact:'Bhavesh Kathariya'},
-    {title:'NAM.Tech',stage:'Evaluating',min:0,max:1,mid:0.5,owner:'Ankur Bhatt',vertical:'Education',priority:'High',nextAction:'',nextActionDate:null,expectedClose:null,mainContact:''},
-  ];
-}
+// ═══ HELPERS ═══
+function fmtR(mn,mx){if(mn===mx)return mn>0?`₹${mn} Cr`:'—';return`₹${mn} – ${mx} Cr`}
+function fmtD(d){return d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})}
+function getQ(d){const q=Math.ceil((d.getMonth()+1)/3);return`Q${q} FY${d.getFullYear()}`}
+function getQR(d){const q=Math.ceil((d.getMonth()+1)/3);return{s:new Date(d.getFullYear(),(q-1)*3,1),e:new Date(d.getFullYear(),q*3,0,23,59,59)}}
+function dayD(a,b){return Math.round((a-b)/864e5)}
+function stB(st){const m={Evaluating:'ev',Qualified:'qu',Proposal:'pr',Negotiation:'ne',Won:'wo',Lost:'lo'};return`<span class="bs bs-${m[st]||'ev'}">${st}</span>`}
 
-// ═══════════════════════════════════════════════
-// RENDERERS
-// ═══════════════════════════════════════════════
-function rKPI(deals){
-  const act=deals.filter(d=>AS.includes(d.stage));
-  const tMin=act.reduce((s,d)=>s+d.min,0),tMax=act.reduce((s,d)=>s+d.max,0);
-  document.getElementById('k1').textContent=`₹${tMin} – ${tMax} Cr`;
-  document.getElementById('k1r').textContent=`Midpoint: ₹${((tMin+tMax)/2).toFixed(1)} Cr`;
+// ═══ RENDERERS ═══
+function rKPI(D){
+  const act=D.filter(d=>AS.includes(d.stage));
+  const tMn=act.reduce((s,d)=>s+d.min,0),tMx=act.reduce((s,d)=>s+d.max,0);
+  document.getElementById('k1').textContent=`₹${tMn} – ${tMx} Cr`;
+  document.getElementById('k1r').textContent=`Midpoint: ₹${((tMn+tMx)/2).toFixed(1)} Cr`;
   document.getElementById('k1s').textContent=`${act.length} active deals`;
   document.getElementById('k2').textContent=act.length;
-  const now=new Date(),qr=getQR(now),qd=act.filter(d=>d.expectedClose&&d.expectedClose>=qr.s&&d.expectedClose<=qr.e);
-  const qMin=qd.reduce((s,d)=>s+d.min,0),qMax=qd.reduce((s,d)=>s+d.max,0);
-  document.getElementById('k3').textContent=`₹${qMin} – ${qMax} Cr`;
+  const now=new Date(),qr=getQR(now),qd=act.filter(d=>d.nextActionDate&&d.nextActionDate>=qr.s&&d.nextActionDate<=qr.e);
+  const qMn=qd.reduce((s,d)=>s+d.min,0),qMx=qd.reduce((s,d)=>s+d.max,0);
+  document.getElementById('k3').textContent=`₹${qMn} – ${qMx} Cr`;
   document.getElementById('k3r').textContent=`${qd.length} deals this quarter`;
-  document.getElementById('k3s').textContent='';
-  if(act.length>0){document.getElementById('k5').textContent=`₹${(tMin/act.length).toFixed(1)} – ${(tMax/act.length).toFixed(1)} Cr`;document.getElementById('k5r').textContent=''}
-  else{document.getElementById('k5').textContent='—'}
-  document.getElementById('pT').textContent=`₹${tMin} – ${tMax} Cr`;
+  if(act.length>0)document.getElementById('k5').textContent=`₹${(tMn/act.length).toFixed(1)} – ${(tMx/act.length).toFixed(1)} Cr`;
+  else document.getElementById('k5').textContent='—';
+  document.getElementById('pT').textContent=`₹${tMn} – ${tMx} Cr`;
 }
 
-function rStages(deals){
+function rStages(D){
   const el=document.getElementById('sS');
-  const allMax=Math.max(...C.stages.map(s=>deals.filter(d=>d.stage===s.n).reduce((a,d)=>a+d.max,0)),1);
-  let h='';C.stages.forEach(s=>{
-    const sd=deals.filter(d=>d.stage===s.n);
-    const sMin=sd.reduce((a,d)=>a+d.min,0),sMax=sd.reduce((a,d)=>a+d.max,0);
-    const pMin=Math.max((sMin/allMax)*100,sd.length>0?4:0);
-    const pMax=Math.max((sMax/allMax)*100,sd.length>0?8:0);
-    const label=sMin===sMax?(sMin>0?`₹${sMin} Cr`:''):`₹${sMin} – ${sMax} Cr`;
-    h+=`<div class="pr"><div class="pl">${s.n}</div><div class="pt2"><div class="pf2 ghost" style="width:${pMax}%;background:${s.c}"></div><div class="pf2" style="width:${pMin}%;background:${s.c}">${sMin>0?label:''}</div></div><div class="pm"><strong>${sd.length}</strong> deal${sd.length!==1?'s':''}</div></div>`;
+  const mx=Math.max(...STAGES.map(s=>D.filter(d=>d.stage===s.n).reduce((a,d)=>a+d.max,0)),1);
+  let h='';STAGES.forEach(s=>{
+    const sd=D.filter(d=>d.stage===s.n),sMn=sd.reduce((a,d)=>a+d.min,0),sMx=sd.reduce((a,d)=>a+d.max,0);
+    const pMn=Math.max((sMn/mx)*100,sd.length>0?4:0),pMx=Math.max((sMx/mx)*100,sd.length>0?8:0);
+    const lb=sMn===sMx?(sMn>0?`₹${sMn} Cr`:''):`₹${sMn} – ${sMx} Cr`;
+    h+=`<div class="pr"><div class="pl">${s.n}</div><div class="pt2"><div class="pf2 ghost" style="width:${pMx}%;background:${s.c}"></div><div class="pf2" style="width:${pMn}%;background:${s.c}">${sMn>0?lb:''}</div></div><div class="pm"><strong>${sd.length}</strong> deal${sd.length!==1?'s':''}</div></div>`;
   });el.innerHTML=h;
 }
 
-function rWL(deals){
-  const el=document.getElementById('sWL'),w=deals.filter(d=>d.stage==='Won'),l=deals.filter(d=>d.stage==='Lost');
-  const wMin=w.reduce((s,d)=>s+d.min,0),wMax=w.reduce((s,d)=>s+d.max,0);
-  const lMin=l.reduce((s,d)=>s+d.min,0),lMax=l.reduce((s,d)=>s+d.max,0);
-  const cl=w.length+l.length;
-  el.innerHTML=`<div class="ww"><div class="ws"><div class="wn" style="color:var(--green)">${w.length}</div><div class="wl">Won</div><div class="wv">${fmtR(wMin,wMax)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--red)">${l.length}</div><div class="wl">Lost</div><div class="wv">${fmtR(lMin,lMax)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--accent)">${cl>0?Math.round((w.length/cl)*100)+'%':'—'}</div><div class="wl">Win Rate</div></div></div>`;
+function rWL(D){
+  const el=document.getElementById('sWL'),w=D.filter(d=>d.stage==='Won'),l=D.filter(d=>d.stage==='Lost');
+  const wMn=w.reduce((s,d)=>s+d.min,0),wMx=w.reduce((s,d)=>s+d.max,0),lMn=l.reduce((s,d)=>s+d.min,0),lMx=l.reduce((s,d)=>s+d.max,0),cl=w.length+l.length;
+  el.innerHTML=`<div class="ww"><div class="ws"><div class="wn" style="color:var(--green)">${w.length}</div><div class="wl">Won</div><div class="wv">${fmtR(wMn,wMx)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--red)">${l.length}</div><div class="wl">Lost</div><div class="wv">${fmtR(lMn,lMx)}</div></div><div class="wdv"></div><div class="ws"><div class="wn" style="color:var(--accent)">${cl>0?Math.round((w.length/cl)*100)+'%':'—'}</div><div class="wl">Win Rate</div></div></div>`;
 }
 
-function rVert(deals){
-  const el=document.getElementById('sV'),act=deals.filter(d=>AS.includes(d.stage)),vt={};
+function rVert(D){
+  const el=document.getElementById('sV'),act=D.filter(d=>AS.includes(d.stage)),vt={};
   act.forEach(d=>{if(!vt[d.vertical])vt[d.vertical]={c:0,mn:0,mx:0};vt[d.vertical].c++;vt[d.vertical].mn+=d.min;vt[d.vertical].mx+=d.max});
   const sr=Object.entries(vt).sort((a,b)=>b[1].mx-a[1].mx),tot=act.length||1;
   let segs='',off=0;const R=55,ci=2*Math.PI*R;
-  sr.forEach(([n,d])=>{const p=d.c/tot,da=p*ci,co=C.vc[n]||'#A0A0B0';segs+=`<circle cx="75" cy="75" r="${R}" fill="none" stroke="${co}" stroke-width="20" stroke-dasharray="${da} ${ci-da}" stroke-dashoffset="${-off}" transform="rotate(-90 75 75)"/>`;off+=da});
-  let lg='';sr.forEach(([n,d])=>{lg+=`<div class="li2"><div class="ld2" style="background:${C.vc[n]||'#A0A0B0'}"></div><strong>${n}</strong><span class="vl">· ${d.c} deal${d.c!==1?'s':''} · ${fmtR(d.mn,d.mx)}</span></div>`});
+  sr.forEach(([n,d])=>{const p=d.c/tot,da=p*ci,co=VC[n]||'#A0A0B0';segs+=`<circle cx="75" cy="75" r="${R}" fill="none" stroke="${co}" stroke-width="20" stroke-dasharray="${da} ${ci-da}" stroke-dashoffset="${-off}" transform="rotate(-90 75 75)"/>`;off+=da});
+  let lg='';sr.forEach(([n,d])=>{lg+=`<div class="li2"><div class="ld2" style="background:${VC[n]||'#A0A0B0'}"></div><strong>${n}</strong><span class="vl">· ${d.c} deal${d.c!==1?'s':''} · ${fmtR(d.mn,d.mx)}</span></div>`});
   el.innerHTML=`<div class="df"><svg class="dsv" viewBox="0 0 150 150"><circle cx="75" cy="75" r="${R}" fill="none" stroke="#F0F0F5" stroke-width="20"/>${segs}<text x="75" y="71" text-anchor="middle" font-family="var(--f)" font-size="26" font-weight="700" fill="var(--text)">${act.length}</text><text x="75" y="90" text-anchor="middle" font-family="var(--f)" font-size="10" font-weight="500" fill="var(--tm)">DEALS</text></svg><div>${lg}</div></div>`;
 }
 
-function rOwn(deals){
-  const el=document.getElementById('sO'),act=deals.filter(d=>AS.includes(d.stage)),ow={};
+function rOwn(D){
+  const el=document.getElementById('sO'),act=D.filter(d=>AS.includes(d.stage)),ow={};
   act.forEach(d=>{if(!ow[d.owner])ow[d.owner]={c:0,mn:0,mx:0};ow[d.owner].c++;ow[d.owner].mn+=d.min;ow[d.owner].mx+=d.max});
-  const sr=Object.entries(ow).sort((a,b)=>b[1].mx-a[1].mx),mxAll=Math.max(...sr.map(([,d])=>d.mx),1);
-  let h='';sr.forEach(([n,d],i)=>{const co=C.oc[i%C.oc.length];
-    const pMin=Math.max((d.mn/mxAll)*100,8);const pMax=Math.max((d.mx/mxAll)*100,12);
-    h+=`<div class="or2"><div class="onm">${n}</div><div class="otr"><div class="ofl ghost" style="width:${pMax}%;background:${co}"></div><div class="ofl" style="width:${pMin}%;background:${co}">${fmtR(d.mn,d.mx)}</div></div><div class="om">${d.c} deal${d.c!==1?'s':''}</div></div>`});
+  const sr=Object.entries(ow).sort((a,b)=>b[1].mx-a[1].mx),mxA=Math.max(...sr.map(([,d])=>d.mx),1);
+  let h='';sr.forEach(([n,d],i)=>{const co=OC[i%OC.length],pMn=Math.max((d.mn/mxA)*100,8),pMx=Math.max((d.mx/mxA)*100,12);
+    h+=`<div class="or2"><div class="onm">${n}</div><div class="otr"><div class="ofl ghost" style="width:${pMx}%;background:${co}"></div><div class="ofl" style="width:${pMn}%;background:${co}">${fmtR(d.mn,d.mx)}</div></div><div class="om">${d.c} deal${d.c!==1?'s':''}</div></div>`});
   el.innerHTML=h||'<div class="nd">No active deals</div>';
 }
 
-function rAll(deals){
-  const el=document.getElementById('sAll');
-  const stageOrder={Evaluating:0,Qualified:1,Proposal:2,Negotiation:3,Won:4,Lost:5};
-  const sorted=[...deals].sort((a,b)=>(stageOrder[a.stage]||99)-(stageOrder[b.stage]||99));
-  document.getElementById('allCt').textContent=deals.length+' deal'+(deals.length!==1?'s':'');
+function rAll(D){
+  const el=document.getElementById('sAll'),so={Evaluating:0,Qualified:1,Proposal:2,Negotiation:3,Won:4,Lost:5};
+  const sorted=[...D].sort((a,b)=>(so[a.stage]||99)-(so[b.stage]||99));
+  document.getElementById('allCt').textContent=D.length+' deal'+(D.length!==1?'s':'');
   let rows='';sorted.forEach(d=>{
-    rows+=`<tr><td class="deal">${d.title}</td><td>${stageBadge(d.stage)}</td><td class="tv">${fmtR(d.min,d.max)}</td><td>${d.vertical}</td><td>${d.owner}</td><td>${d.expectedClose?fmtD(d.expectedClose):'—'}</td><td>${d.nextAction||'—'}</td></tr>`;
+    rows+=`<tr><td class="deal">${d.title}</td><td>${stB(d.stage)}</td><td class="tv">${d.dealValueLabel||fmtR(d.min,d.max)}</td><td>${d.vertical}</td><td>${d.owner}</td><td>${d.priority}</td><td>${d.nextAction||'—'}</td></tr>`;
   });
-  el.innerHTML=`<table class="tbl"><thead><tr><th>Project / Deal</th><th>Stage</th><th>Value Range</th><th>Vertical</th><th>Owner</th><th>Expected Close</th><th>Next Action</th></tr></thead><tbody>${rows}</tbody></table>`;
+  el.innerHTML=`<table class="tbl"><thead><tr><th>Project</th><th>Stage</th><th>Value Range</th><th>Vertical</th><th>Owner</th><th>Priority</th><th>Next Action</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-function rAct(deals){
+function rAct(D){
   const el=document.getElementById('sA'),now=new Date();now.setHours(0,0,0,0);
-  const up=deals.filter(d=>d.nextActionDate&&d.nextAction&&AS.includes(d.stage)).sort((a,b)=>a.nextActionDate-b.nextActionDate).slice(0,10);
+  const up=D.filter(d=>d.nextActionDate&&d.nextAction&&AS.includes(d.stage)).sort((a,b)=>a.nextActionDate-b.nextActionDate).slice(0,10);
   document.getElementById('aCt').textContent=up.length+' action'+(up.length!==1?'s':'');
   if(!up.length){el.innerHTML='<div class="nd">No upcoming actions scheduled</div>';return}
   let rows='';up.forEach(d=>{
     const diff=dayD(d.nextActionDate,now);let dc='upcoming',dl=fmtD(d.nextActionDate);
     if(diff<0){dc='overdue';dl+=` (${Math.abs(diff)}d overdue)`}else if(diff===0){dc='today';dl+=' (Today)'}else if(diff<=3){dc='today';dl+=` (in ${diff}d)`}
-    rows+=`<tr><td class="deal">${d.title}</td><td>${d.nextAction}</td><td class="${dc}">${dl}</td><td>${d.owner}</td><td>${stageBadge(d.stage)}</td></tr>`;
+    rows+=`<tr><td class="deal">${d.title}</td><td>${d.nextAction}</td><td class="${dc}">${dl}</td><td>${d.owner}</td><td>${stB(d.stage)}</td></tr>`;
   });
   el.innerHTML=`<table class="tbl"><thead><tr><th>Deal</th><th>Action Required</th><th>Due Date</th><th>Owner</th><th>Stage</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-// ═══════════════════════════════════════════════
-// MAIN LOADER — Tries live API, falls back gracefully
-// ═══════════════════════════════════════════════
-let live=true;
+// ═══ MAIN LOADER — Fetches from GitHub ═══
 async function loadData(){
   const lo=document.getElementById('lo'),sd=document.getElementById('sDot'),st=document.getElementById('sTxt'),bt=document.getElementById('bRef');
-  lo.classList.add('a');sd.className='dt ldg';st.textContent='Fetching...';bt.classList.add('ld');
+  lo.classList.add('a');sd.className='dt ldg';st.textContent='Fetching live data...';bt.classList.add('ld');
   let deals=[];
   try{
-    if(live){
-      const raw=await fetchSP();
-      deals=parse(raw);
-      if(deals.length>0){
-        sd.className='dt';
-        st.textContent=`Live · ${deals.length} deals from SharePoint`;
-      } else {
-        throw new Error('No items returned');
-      }
-    } else {
-      throw new Error('Using cached');
-    }
-  } catch(e){
-    console.log('API status:',e.message,'— using cached data');
-    deals=fallback();
-    live=false;
+    const r=await fetch(DATA_URL+'?t='+Date.now());
+    if(!r.ok)throw new Error(`HTTP ${r.status}`);
+    const raw=await r.json();
+    deals=parse(raw);
+    sd.className='dt';
+    const lastMod=deals.reduce((latest,d)=>d.modified&&d.modified>latest?d.modified:latest,new Date(0));
+    st.textContent=`Live · ${deals.length} deals · Data from ${fmtD(lastMod)}`;
+  }catch(e){
+    console.error('Fetch error:',e);
     sd.className='dt err';
-    st.textContent='Offline · cached data (API access pending)';
+    st.textContent='Error loading data: '+e.message;
   }
   const now=new Date();document.getElementById('dp').textContent=fmtD(now)+' · '+getQ(now);
-  rKPI(deals);rStages(deals);rWL(deals);rVert(deals);rOwn(deals);rAll(deals);rAct(deals);
+  if(deals.length>0){rKPI(deals);rStages(deals);rWL(deals);rVert(deals);rOwn(deals);rAll(deals);rAct(deals)}
   lo.classList.remove('a');bt.classList.remove('ld');
 }
 document.addEventListener('DOMContentLoaded',()=>{loadData();setInterval(loadData,3e5)});
